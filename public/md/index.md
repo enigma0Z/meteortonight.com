@@ -5,3 +5,7 @@
 {bubble:apple-music:music.apple.com/us/artist/meteor-tonight/508640778:Apple Music}
 
 {bubble:spotify:open.spotify.com/artist/6SGhHHCNKhIfF6W7xJOkyf:Spotify}
+
+{bubble:tiktok:tiktok.com/@meteor.tonight:TikTok}
+
+{bubble:youtube:youtube.com/@MeteorTonight:YouTube}

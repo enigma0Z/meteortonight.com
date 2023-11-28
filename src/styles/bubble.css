@@ -11,7 +11,7 @@
   align-items: center;
   display: flex;
   width: fit-content;
-  font-size: 32pt;
+  font-size: 24pt;
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
@@ -39,6 +39,27 @@ a.link-bubble:hover {
   content: "";
   background-image: url('../../public/img/service/spotify.png');
   background-size: 64px;
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.link-bubble-tiktok::before {
+  content: "";
+  background-image: url('../../public/img/service/tiktok.png');
+  background-size: 64px;
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.link-bubble-youtube::before {
+  content: "";
+  background-image: url('../../public/img/service/youtube.png');
+  background-size: 64px;
+  background-repeat: no-repeat;
   width: 64px;
   height: 64px;
   display: inline-block;
