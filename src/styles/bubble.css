@@ -1,0 +1,9 @@
+.link-bubble {
+  background-color: white;
+  text-transform: uppercase;
+  border-radius: .25em;
+  border: 1px solid #FFFFFF40;
+  padding: .0675em .25em .0675em .25em;
+  text-align: center;
+  display: inline-block;
+}

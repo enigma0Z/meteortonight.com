@@ -1,0 +1,36 @@
+{
+  "name": "meteortonight.com",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build:index": "./scripts/build_index.py",
+    "build": "rm -rvf .next out && npm run build:index && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "npm run build && ./scripts/deploy.sh",
+    "serve": "serve out",
+    "login": "aws codeartifact login --tool npm --repository enigma0z --domain enigma0z-com --domain-owner 494500506466 --region us-east-1 --namespace enigma0z",
+    "update:brand": "npm install @enigma0z/brand-resources"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.0",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.35",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "next": "13.3.0",
+    "pokedex-promise-v2": "^4.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-markdown": "^8.0.7",
+    "remark-gfm": "^3.0.1",
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^7.0.0"
+  }
+}

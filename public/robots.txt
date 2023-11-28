@@ -1,0 +1,2 @@
+Disallow: /md/
+Allow: /
