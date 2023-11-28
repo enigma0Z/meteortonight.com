@@ -15,6 +15,7 @@ for item in os.walk('public/md'):
         item_path = item[0].split('/')[2:]
         item_file = os.path.splitext(file)[0]
         item_ext = os.path.splitext(file)[1]
+        item_header = True
         if (item_ext == '.md'):
             with open(os.path.join(item[0], file)) as f:
                 lines = [line.strip() for line in f.readlines()]
@@ -29,6 +30,8 @@ for item in os.walk('public/md'):
             
             try:
                 item_description = lines[2]
+                if '{meta:no-header}' in item_description:
+                    item_header = False
             except:
                 print('Could not find description', file)
                 continue
@@ -40,6 +43,7 @@ for item in os.walk('public/md'):
                 'file': item_file,
                 'title': item_title,
                 'description': item_description,
+                'header': item_header,
                 'mtime': item_mtime,
             })
 
