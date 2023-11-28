@@ -25,6 +25,7 @@ type ContentMarkdownProps = {
   mtime?: number,
   path?: string[],
   uri?: string,
+  header?: boolean,
   children: string,
 }
 
@@ -49,9 +50,9 @@ function ContentBreadcrumb({ path }: { path: string[] }) {
   }</>)
 }
 
-function ContentMarkdown({ mtime, path, uri, children }: ContentMarkdownProps) {
+function ContentMarkdown({ mtime, path, uri, header, children }: ContentMarkdownProps) {
   let metadata = <></>
-  if (mtime !== undefined && path !== undefined && uri !== undefined) {
+  if (header && mtime !== undefined && path !== undefined && uri !== undefined) {
     metadata = <Box className={`${css.MarkdownHeader}`}>
       <Typography flex={'100%'} variant="caption">
         Last updated {new Date(mtime).toDateString()}, Filed
