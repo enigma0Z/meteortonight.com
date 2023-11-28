@@ -1,9 +1,46 @@
 .link-bubble {
-  background-color: white;
+  background-color: transparent;
   text-transform: uppercase;
-  border-radius: .25em;
+  border-radius: 48px;
   border: 1px solid #FFFFFF40;
-  padding: .0675em .25em .0675em .25em;
+  height: 96px;
+  padding: 4px 24px 4px 24px;
   text-align: center;
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  width: fit-content;
+  font-size: 32pt;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a.link-bubble {
+  text-decoration: none !important;
+}
+
+a.link-bubble:hover {
+  background-color: white;
+}
+
+.link-bubble-apple-music::before {
+  content: "";
+  background-image: url('../../public/img/service/apple_music.svg');
+  background-size: 64px;
+  width: 64px;
+  height: 64px;
   display: inline-block;
+  margin-right: 16px;
+}
+
+.link-bubble-spotify::before {
+  content: "";
+  background-image: url('../../public/img/service/spotify.png');
+  background-size: 64px;
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  margin-right: 16px;
 }
