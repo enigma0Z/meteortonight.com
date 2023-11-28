@@ -39,14 +39,9 @@
 .MarkdownContent h1 {
   font-size: var(--h1-size);
   font-weight: bold;
-  border: 1px solid #FFFFFF40;
-  margin: 0 -.3em .5em -.3em;
-  padding: 0em .25em .75em .25em;
-  border-radius: .25em;
-  /* padding-bottom: .875em; */
   white-space: nowrap;
-  background-color: #A02020A0;
   overflow: clip;
+  text-align: center;
 }
 
 .MarkdownContent h2 {
