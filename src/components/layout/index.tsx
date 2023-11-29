@@ -27,6 +27,8 @@ export function Layout({ children }: { sidebar?: ReactElement, children: ReactEl
       }
     }}>
       <Box display='flex' flexDirection='column' width='100%'>
+        {/* Page header content here  */}
+        <img src="img/banner.png" width={'75%'} style={{alignSelf: 'center'}} />
         <nav>
           <Box display="flex" flexDirection="row" marginBottom={'.5em'}>
             <Typography variant='h3' flex={1} textAlign={'center'}>
@@ -40,7 +42,6 @@ export function Layout({ children }: { sidebar?: ReactElement, children: ReactEl
             </Typography>
           </Box>
         </nav>
-        {/* Page header content here  */}
         {/* Different for mobile */}
       </Box>
       <Box display={'flex'} flexDirection='column' width='100%'>
