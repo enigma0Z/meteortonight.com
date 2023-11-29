@@ -15,17 +15,21 @@ for item in os.walk('public/md'):
         item_path = item[0].split('/')[2:]
         item_file = os.path.splitext(file)[0]
         item_ext = os.path.splitext(file)[1]
+        item_title = None
         item_header = True
         if (item_ext == '.md'):
             with open(os.path.join(item[0], file)) as f:
                 lines = [line.strip() for line in f.readlines()]
 
             try: 
-                item_title = ' '.join([
-                    line for line in lines if line.startswith('# ')
-                ][0].split(' ')[1:])
-            except:
-                print('Could not find title', file)
+                for line in lines:
+                    if line.startswith('{title'):
+                        item_title = line.split(':')[1].split('}')[0]
+                        break
+                else:
+                    print('Could not find title', file)
+            except Exception as ex:
+                print(ex)
                 continue
             
             try:
