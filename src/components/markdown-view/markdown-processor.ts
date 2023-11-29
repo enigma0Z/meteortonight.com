@@ -3,7 +3,7 @@ import { Plugin } from 'unified'
 import { PhrasingContent } from 'mdast'
 
 const RE_BUBBLE = /{bubble:.+?}/g;
-const RE_META = /{meta:.+?}/g;
+const RE_CATCHALL = /{.+?}/g;
 
 // Creating HTML node in Markdown node is undocumented.
 // https://github.com/syntax-tree/mdast-util-math/blob/e70bb824dc70f5423324b31b0b68581cf6698fe8/index.js#L44-L55
@@ -37,7 +37,7 @@ export default function plugin(): Plugin {
 
   const replacers: [Find, Replace][] = [
     [RE_BUBBLE, replaceBubble],
-    [RE_META, '']
+    [RE_CATCHALL, '']
   ];
 
   function transformer(tree: any) {
