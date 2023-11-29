@@ -1,4 +1,4 @@
-# Meteor Tonight
+{title:Meteor Tonight}
 
 {meta:no-header}
 
