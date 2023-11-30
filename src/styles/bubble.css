@@ -1,6 +1,5 @@
-.link-bubble {
+.link-big-bubble {
   background-color: transparent;
-  text-transform: uppercase;
   border-radius: 48px;
   border: 1px solid #FFFFFF40;
   height: 96px;
@@ -17,51 +16,47 @@
   margin-right: auto;
 }
 
-a.link-bubble {
+a.link-big-bubble {
   text-decoration: none !important;
 }
 
-a.link-bubble:hover {
+a.link-big-bubble:hover {
   background-color: white;
 }
 
-.link-bubble-apple-music::before {
+a.link-big-bubble div div.what {
+  font-size: 10pt
+}
+
+a.link-big-bubble div div.where {
+  text-transform: uppercase;
+}
+
+a.link-big-bubble::before {
+  background-repeat: no-repeat;
+  background-size: 64px;
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.link-big-bubble-apple-music::before {
   content: "";
   background-image: url('../../public/img/service/apple_music.svg');
-  background-size: 64px;
-  width: 64px;
-  height: 64px;
-  display: inline-block;
-  margin-right: 16px;
 }
 
-.link-bubble-spotify::before {
+.link-big-bubble-spotify::before {
   content: "";
   background-image: url('../../public/img/service/spotify.png');
-  background-size: 64px;
-  width: 64px;
-  height: 64px;
-  display: inline-block;
-  margin-right: 16px;
 }
 
-.link-bubble-tiktok::before {
+.link-big-bubble-tiktok::before {
   content: "";
   background-image: url('../../public/img/service/tiktok.png');
-  background-size: 64px;
-  width: 64px;
-  height: 64px;
-  display: inline-block;
-  margin-right: 16px;
 }
 
-.link-bubble-youtube::before {
+.link-big-bubble-youtube::before {
   content: "";
   background-image: url('../../public/img/service/youtube.png');
-  background-size: 64px;
-  background-repeat: no-repeat;
-  width: 64px;
-  height: 64px;
-  display: inline-block;
-  margin-right: 16px;
 }
