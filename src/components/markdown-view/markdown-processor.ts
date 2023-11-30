@@ -2,42 +2,58 @@ import { Find, Replace, findAndReplace, ReplaceFunction } from 'mdast-util-find-
 import { Plugin } from 'unified'
 import { PhrasingContent } from 'mdast'
 
-const RE_BUBBLE = /{bubble:.+?}/g;
-const RE_CATCHALL = /{.+?}/g;
+const RE_BIG_BUBBLE = '{big-bubble:(.+?)}'
+const RE_CATCHALL = '{.+?}'
+
+RE_BIG_BUBBLE.toString()
 
 // Creating HTML node in Markdown node is undocumented.
 // https://github.com/syntax-tree/mdast-util-math/blob/e70bb824dc70f5423324b31b0b68581cf6698fe8/index.js#L44-L55
 
 export default function plugin(): Plugin {
-  function linkBubble(text: string): PhrasingContent[] {
-    console.log('linkBubble', text)
-    const [icon, url, value]: string[] = text.split(':')
+  function linkBigBubble(text: string): PhrasingContent[] {
+    const [icon, url, what, where]: string[] = text.split(':')
+    console.log('linkBigBubble', text)
 
     return [{
       type: 'html',
-      value: value,
+      value: '',
       data: {
         hName: 'a',
         hProperties: {
-          className: ['link-bubble', `link-bubble-${icon}`],
+          className: ['link-big-bubble', `link-big-bubble-${icon}`],
           href: `https://${url}`,
         },
-        hChildren: [
-          {
-            type: 'text', value: value
-          }
-        ],
+        hChildren: [{
+          type: 'element', 
+          tagName: 'div',
+          children: [{
+            type: 'element', 
+            tagName: 'div',
+            properties: { className: ['what'] },
+            children: [{
+              type: 'text', value: what + " @"
+            }],
+          }, {
+            type: 'element', 
+            tagName: 'div',
+            properties: { className: ['where'] },
+            children: [{
+              type: 'text', value: where
+            }],
+          }],
+        }],
       },
     }];
   }
 
-  function replaceBubble(match: string) {
-    return linkBubble(match.replace(/{bubble:(.+?)}/, '$1'))
+  function replaceBigBubble(match: string) {
+    return linkBigBubble(match.replace(RegExp(RE_BIG_BUBBLE, 'g'), '$1'))
   }
 
   const replacers: [Find, Replace][] = [
-    [RE_BUBBLE, replaceBubble],
-    [RE_CATCHALL, '']
+    [RegExp(RE_BIG_BUBBLE, 'g'), replaceBigBubble],
+    [RegExp(RE_CATCHALL, 'g'), '']
   ];
 
   function transformer(tree: any) {
