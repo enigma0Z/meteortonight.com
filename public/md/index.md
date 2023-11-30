@@ -1,11 +1,9 @@
-{title:Meteor Tonight}
-
 {meta:no-header}
 
-{bubble:apple-music:music.apple.com/us/artist/meteor-tonight/508640778:Apple Music}
+{big-bubble:apple-music:music.apple.com/us/artist/meteor-tonight/508640778:Meteor Tonight:Apple Music}
 
-{bubble:spotify:open.spotify.com/artist/6SGhHHCNKhIfF6W7xJOkyf:Spotify}
+{big-bubble:spotify:open.spotify.com/artist/6SGhHHCNKhIfF6W7xJOkyf:Meteor Tonight:Spotify}
 
-{bubble:tiktok:tiktok.com/@meteor.tonight:TikTok}
+{big-bubble:tiktok:tiktok.com/@meteor.tonight:Meteor Tonight:TikTok}
 
-{bubble:youtube:youtube.com/@MeteorTonight:YouTube}
+{big-bubble:youtube:youtube.com/@MeteorTonight:Meteor Tonight:YouTube}
