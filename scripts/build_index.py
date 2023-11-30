@@ -2,6 +2,7 @@
 
 import os
 import json
+import re
 
 # item.path
 # item.title
@@ -10,35 +11,35 @@ import json
 # item.thumbnail
 output_items = []
 
+RE_META = r'{meta:(.+)}'
+
 for item in os.walk('public/md'):
     for file in (item[2]):
         item_path = item[0].split('/')[2:]
         item_file = os.path.splitext(file)[0]
         item_ext = os.path.splitext(file)[1]
         item_title = None
+        item_description = None
         item_header = True
+        item_mtime = None
+
         if (item_ext == '.md'):
             with open(os.path.join(item[0], file)) as f:
                 lines = [line.strip() for line in f.readlines()]
 
-            try: 
-                for line in lines:
-                    if line.startswith('{title'):
-                        item_title = line.split(':')[1].split('}')[0]
-                        break
-                else:
-                    print('Could not find title', file)
-            except Exception as ex:
-                print(ex)
-                continue
-            
-            try:
-                item_description = lines[2]
-                if '{meta:no-header}' in item_description:
+            for line in map(
+                lambda m: m.group(1), filter(
+                    lambda m: m != None, map(
+                        lambda l: re.match(RE_META, l), lines
+                    )
+                )
+            ):
+                if line == 'no-header':
                     item_header = False
-            except:
-                print('Could not find description', file)
-                continue
+                elif line.startswith('title:'):
+                    item_title = ':'.join(line.split(':')[1:])
+                elif line.startswith('description:'):
+                    item_description = ':'.join(line.split(':')[1:])
 
             item_mtime = os.stat(os.path.join(item[0], file)).st_mtime * 1000
 
