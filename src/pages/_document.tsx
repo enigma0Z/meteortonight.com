@@ -14,10 +14,6 @@ export default function Document() {
           gtag('js', new Date());
           gtag('config', 'G-WZ67KCRGPC');
         `} </Script>
-        <Script strategy='afterInteractive' data-cfasync="false" id='nitroads setup'>{`
-          window.nitroAds = window.nitroAds || { createAd: function () { return new Promise(e => { window.nitroAds.queue.push(["createAd", arguments, e]) }) }, addUserToken: function () { window.nitroAds.queue.push(["addUserToken", arguments]) }, queue: [] };
-        `}</Script>
-        <Script strategy='afterInteractive' data-cfasync="false" src="https://s.nitropay.com/ads-1347.js"></Script>
       </Head>
       <body>
         <Main />
