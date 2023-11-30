@@ -1,5 +1,6 @@
-.link-big-bubble {
-  background-color: transparent;
+a.link-big-bubble {
+  text-decoration: none !important;
+  background-color: #FFFFFF40;
   border-radius: 48px;
   border: 1px solid #FFFFFF40;
   height: 96px;
@@ -14,10 +15,7 @@
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
-}
-
-a.link-big-bubble {
-  text-decoration: none !important;
+  transition: .3s;
 }
 
 a.link-big-bubble:hover {
@@ -46,6 +44,11 @@ a.link-big-bubble::before {
   background-image: url('../../public/img/service/apple_music.svg');
 }
 
+.link-big-bubble-amazon::before {
+  content: "";
+  background-image: url('../../public/img/service/amazon.svg');
+}
+
 .link-big-bubble-spotify::before {
   content: "";
   background-image: url('../../public/img/service/spotify.png');
@@ -59,4 +62,9 @@ a.link-big-bubble::before {
 .link-big-bubble-youtube::before {
   content: "";
   background-image: url('../../public/img/service/youtube.png');
+}
+
+.link-big-bubble-tidal::before {
+  content: "";
+  background-image: url('../../public/img/service/tidal.png');
 }
