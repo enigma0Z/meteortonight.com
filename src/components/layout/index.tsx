@@ -28,7 +28,9 @@ export function Layout({ children }: { sidebar?: ReactElement, children: ReactEl
     }}>
       <Box display='flex' flexDirection='column' width='100%'>
         {/* Page header content here  */}
-        <img src="img/banner.png" width={'75%'} style={{alignSelf: 'center'}} />
+        <NextLink href='/' style={{textAlign: 'center'}}>
+          <img src="/img/banner.png" width={'100%'} />
+        </NextLink>
         <nav>
           <Box display="flex" flexDirection="row" marginBottom={'.5em'}>
             <Typography variant='h3' flex={1} textAlign={'center'}>
