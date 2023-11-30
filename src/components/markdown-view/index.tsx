@@ -123,7 +123,7 @@ export function CategoryView({ category }: { category: string[] }) {
         let markdownContent = await result.text()
 
         newPageContent.push(
-          <ContentMarkdown key={uri} uri={uri} mtime={content.mtime} path={content.path}>
+          <ContentMarkdown header={true} key={uri} uri={uri} mtime={content.mtime} path={content.path}>
             {markdownContent}
           </ContentMarkdown>
         )
@@ -181,7 +181,9 @@ export function PostView({ path }: { path: string[] }) {
           .map(line => line.split(' ').slice(1).join(' '))
           .map(line => ({ name: line, href: `#${line.replaceAll(' ', '-')}` }))
       )
-      setTitle(fetchContent.split('\n')[0].split(' ').slice(1).join(' '))
+      // setTitle(fetchContent.split('\n')[0].split(' ').slice(1).join(' '))
+      console.log('fetchMetadata', fetchMetadata)
+      setTitle(fetchMetadata.title ?? 'Meteor Tonight')
     }
   }, [path, fetchContent, fetchMetadata])
 
