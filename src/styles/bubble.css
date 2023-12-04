@@ -1,16 +1,22 @@
 a.link-big-bubble {
+  --size: 64px;
+  --icon-size: calc(var(--size)/1.5);
+  --icon-margin: calc(var(--size)/6);
+  --padding-side: calc(var(--size)/4);
+  --padding-top: calc(var(--size)/24);
+  --border-radius: calc(var(--size)/2);
   text-decoration: none !important;
   background-color: #FFFFFF40;
-  border-radius: 48px;
+  border-radius: var(--border-radius);
   border: 1px solid #FFFFFF40;
-  height: 96px;
+  height: var(--size);
   padding: 4px 24px 4px 24px;
   text-align: center;
   vertical-align: middle;
   text-align: center;
   align-items: center;
   display: flex;
-  width: fit-content;
+  width: 100%;
   font-size: 20pt;
   font-weight: bold;
   margin-left: auto;
@@ -22,21 +28,35 @@ a.link-big-bubble:hover {
   background-color: white;
 }
 
+a.link-big-bubble div {
+  display: inline-flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+a.link-big-bubble div div {
+  align-self: center;
+  width: fit-content;
+}
+
 a.link-big-bubble div div.what {
-  font-size: 10pt
+  font-size: 10pt;
+  justify-content: right;
+  margin-right: .5em;
 }
 
 a.link-big-bubble div div.where {
   text-transform: uppercase;
+  justify-content: left;
 }
 
 a.link-big-bubble::before {
   background-repeat: no-repeat;
-  background-size: 64px;
-  width: 64px;
-  height: 64px;
+  background-size: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
   display: inline-block;
-  margin-right: 16px;
+  margin-right: var(--icon-margin);
 }
 
 .link-big-bubble-apple-music::before {
