@@ -82,7 +82,7 @@ function ContentMarkdown({ mtime, path, uri, header, children }: ContentMarkdown
           return <NextLink href={props.href ?? ''} {...props} />
         },
       }}
-      remarkPlugins={[remarkGfm, markdownProcessor]}
+      remarkPlugins={[markdownProcessor, remarkGfm]}
     >
       {children}
     </ReactMarkdown>
