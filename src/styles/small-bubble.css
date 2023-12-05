@@ -1,3 +1,4 @@
+
 a.link-small-bubble {
   --size: 48px;
   --icon-size: calc(var(--size)/1.5);
@@ -16,12 +17,19 @@ a.link-small-bubble {
   text-align: center;
   align-items: center;
   display: inline-flex;
-  width: 25%;
+  width: 60%;
   font-size: 12pt;
   font-weight: bold;
   transition: .3s;
   margin-right: .5em;
   margin-bottom: 1em;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  a.link-small-bubble {
+    width: 25%;
+  }
 }
 
 a.link-small-bubble:hover {
