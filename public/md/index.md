@@ -1,13 +1,13 @@
 {meta:no-header}
 
-{big-bubble:apple-music:music.apple.com/us/artist/meteor-tonight/508640778:Meteor Tonight:Apple Music}
+{bubble::big::apple-music::music.apple.com/us/artist/meteor-tonight/508640778::Meteor Tonight}
 
-{big-bubble:spotify:open.spotify.com/artist/6SGhHHCNKhIfF6W7xJOkyf:Meteor Tonight:Spotify}
+{bubble::big::spotify::open.spotify.com/artist/6SGhHHCNKhIfF6W7xJOkyf::Meteor Tonight}
 
-{big-bubble:tiktok:tiktok.com/@meteor.tonight:Meteor Tonight:TikTok}
+{bubble::big::tiktok::tiktok.com/@meteor.tonight::Meteor Tonight}
 
-{big-bubble:youtube:youtube.com/@MeteorTonight:Meteor Tonight:YouTube}
+{bubble::big::youtube::youtube.com/@MeteorTonight::Meteor Tonight}
 
-{big-bubble:tidal:listen.tidal.com/artist/6575950:Meteor Tonight:Tidal}
+{bubble::big::tidal::listen.tidal.com/artist/6575950::Meteor Tonight}
 
-{big-bubble:amazon:music.amazon.com/artists/B007HYNXU6/meteor-tonight:Meteor Tonight:Amazon Music}
+{bubble::big::amazon::music.amazon.com/artists/B007HYNXU6/meteor-tonight::Meteor Tonight}
