@@ -1,0 +1,90 @@
+a.link-small-bubble {
+  --size: 48px;
+  --icon-size: calc(var(--size)/1.5);
+  --icon-margin: calc(var(--size)/6);
+  --padding-side: calc(var(--size)/4);
+  --padding-top: calc(var(--size)/24);
+  --border-radius: calc(var(--size)/2);
+  text-decoration: none !important;
+  background-color: #FFFFFF40;
+  border-radius: var(--border-radius);
+  border: 1px solid #FFFFFF40;
+  height: var(--size);
+  padding: 4px 24px 4px 24px;
+  text-align: center;
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+  display: inline-flex;
+  width: 25%;
+  font-size: 12pt;
+  font-weight: bold;
+  transition: .3s;
+  margin-right: .5em;
+  margin-bottom: 1em;
+}
+
+a.link-small-bubble:hover {
+  background-color: white;
+}
+
+a.link-small-bubble div {
+  display: inline-flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+a.link-small-bubble div div {
+  align-self: center;
+  width: fit-content;
+}
+
+a.link-small-bubble div div.what {
+  font-size: 8pt;
+  justify-content: right;
+  margin-right: .5em;
+}
+
+a.link-small-bubble div div.where {
+  text-transform: uppercase;
+  justify-content: left;
+}
+
+a.link-small-bubble::before {
+  background-repeat: no-repeat;
+  background-size: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: inline-block;
+  margin-right: var(--icon-margin);
+}
+
+.link-small-bubble-apple-music::before {
+  content: "";
+  background-image: url('../../public/img/service/apple_music.svg');
+}
+
+.link-small-bubble-amazon::before {
+  content: "";
+  background-image: url('../../public/img/service/amazon.svg');
+}
+
+.link-small-bubble-spotify::before {
+  content: "";
+  background-image: url('../../public/img/service/spotify.png');
+}
+
+.link-small-bubble-tiktok::before {
+  content: "";
+  background-image: url('../../public/img/service/tiktok.png');
+}
+
+.link-small-bubble-youtube::before {
+  content: "";
+  background-image: url('../../public/img/service/youtube.png');
+}
+
+.link-small-bubble-tidal::before {
+  content: "";
+  background-image: url('../../public/img/service/tidal.png');
+}

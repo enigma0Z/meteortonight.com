@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
-import '@/styles/bubble.css'
+import '@/styles/big-bubble.css'
+import '@/styles/small-bubble.css'
 import '@enigma0z/brand-resources/res/fonts.css'
 import '@enigma0z/brand-resources/res/text.css'
 

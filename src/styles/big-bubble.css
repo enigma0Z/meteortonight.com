@@ -59,6 +59,10 @@ a.link-big-bubble::before {
   margin-right: var(--icon-margin);
 }
 
+.link-big-bubble-apple-music::content{
+  content: "Apple Music"
+}
+
 .link-big-bubble-apple-music::before {
   content: "";
   background-image: url('../../public/img/service/apple_music.svg');
