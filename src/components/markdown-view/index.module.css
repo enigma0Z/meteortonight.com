@@ -126,6 +126,15 @@
   /* top right bottom left */
 }
 
+.MarkdownContent img[src*='#left-circle'] {
+  width: 33%;
+  border-radius: 50%;
+  border: 1px solid #FFFFFF80;
+  float: left;
+  margin: 0em 2em 1em 0em;
+  /* top right bottom left */
+}
+
 .MarkdownHeader {
   font-size: var(--h1-size);
   display: flex;
