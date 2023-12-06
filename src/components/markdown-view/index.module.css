@@ -24,6 +24,7 @@
   /* border-bottom: 3px dotted #FFFFFF80;  */
   margin-bottom: 1.5em;
   padding-bottom: 0em;
+  position: relative;
 }
 
 .MarkdownContent {
@@ -39,15 +40,12 @@
 .MarkdownContent h1 {
   font-size: var(--h1-size);
   font-weight: bold;
-  border: 1px solid #FFFFFF40;
-  margin: 0 -.3em .5em -.3em;
-  padding: 0em .25em .75em .25em;
-  border-radius: .25em;
-  /* padding-bottom: .875em; */
+  margin-bottom: 1.5em;
   white-space: nowrap;
-  background-color: #FFFFFF20;
   overflow: clip;
   text-align: center;
+  position: relative;
+  z-index: -50;
 }
 
 .MarkdownContent h2 {
@@ -139,11 +137,13 @@
   font-size: var(--h1-size);
   display: flex;
   flex-direction: row;
-  position: relative;
-  top: 2.75ex;
-  height: 0;
-  margin: .5em 0 0 0;
-  padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 5ex;
+  background: #FFFFFF20;
+  padding: 3ex .25em .75em .25em;
+  border-radius: .25em;
+  border: 1px solid #FFFFFF40;
 }
 
 .MarkdownHeader span {

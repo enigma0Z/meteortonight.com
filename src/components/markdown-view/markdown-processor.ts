@@ -10,7 +10,6 @@ const RE_CATCHALL = '{.+?}'
 
 export default function plugin(): Plugin {
   function linkBigBubble(text: string): PhrasingContent[] {
-    console.log('linkBigBubble', text)
     const [size, icon, url, what]: string[] = text.split('::')
 
     return [{
@@ -46,7 +45,6 @@ export default function plugin(): Plugin {
   }
 
   function replaceBigBubble(match: string) {
-    console.log('replaceBigBubble', match)
     return linkBigBubble(match.replace(RegExp(RE_BUBBLE, 'g'), '$1'))
   }
 

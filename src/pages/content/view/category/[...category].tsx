@@ -26,7 +26,6 @@ type Metadata = {
 
 export const Page: NextPageWithLayout = () => {
   const { category } = useRouter().query as Query
-  console.log('category', category)
 
   return <>
     <Head>

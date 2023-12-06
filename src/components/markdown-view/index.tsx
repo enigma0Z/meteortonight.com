@@ -1,9 +1,9 @@
-import useFetch from "@/hooks/useFetch"
+import useFetch, { useFetchObj } from "@/hooks/useFetch"
 import { BASE_PATH, ContentIndex, ContentIndexItem } from "@/types/content"
 import { useEffect, useState } from "react"
 
 import css from './index.module.css'
-import { Box, List, ListItem, Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { NextLink } from "../NextLink"
@@ -30,7 +30,6 @@ type ContentMarkdownProps = {
 }
 
 function ContentBreadcrumb({ path }: { path: string[] }) {
-  console.log('ContentBreadcrumb()', path)
   return (<>{
     path.map((item, index) => (
       <>
@@ -96,7 +95,6 @@ export function getUriPathFromContent(content: ContentIndexItem) {
 export function CategoryView({ category }: { category: string[] }) {
   const [pageContent, setPageContent] = useState([] as JSX.Element[])
   const jsonPath = [BASE_PATH]
-  console.log('category', category)
   if (category) jsonPath.push(...category)
   jsonPath.push('index.json')
 
@@ -153,7 +151,7 @@ export function CategoryView({ category }: { category: string[] }) {
     <Head>
       <title>{"Meteor Tonight" + category !== undefined && category.length > 0 ? ' - ' + capitalize(category.join(' / ')) : ''}</title>
     </Head>
-    <Box display={'flex'} flexDirection='row'>
+    <Box display={'flex'} flexDirection='column'>
       <Box width={'100%'}>
         {pageContent}
       </Box>
@@ -161,50 +159,62 @@ export function CategoryView({ category }: { category: string[] }) {
   </>)
 }
 
-export function PostView({ path }: { path: string[] }) {
-  const [content, setContent] = useState(<></>)
-  const [sidebar, setSidebar] = useState([] as SidebarItem[])
+function contentUrl(path: string[]) {
+  return [BASE_PATH, path.join('/')].join('/') + '.md'
+}
+
+function metadataUrl(path: string[]) {
+  return [BASE_PATH, path.join('/')].join('/') + '.md.json'
+}
+
+export function PostView(
+  { path, usePostTitle = true, header = true }: 
+  { path: string[], usePostTitle: boolean, header: boolean }
+) {
+  const [content, setContent] = useState<JSX.Element[]>([])
   const [title, setTitle] = useState(null as null | string)
 
-  const [fetchContent] = useFetch<string>([BASE_PATH, path.join('/')].join('/') + '.md')
-  const [fetchMetadata] = useFetch<ContentIndexItem>([BASE_PATH, path.join('/')].join('/') + '.md.json')
+  const [fetchContent] = useFetch<string>(contentUrl(path))
+  const [fetchMetadata] = useFetch<ContentIndexItem>(metadataUrl(path))
 
   useEffect(() => {
     if (fetchContent && fetchMetadata) {
-      setContent(<ContentMarkdown {...fetchMetadata} uri={path.join('/')}>
-        {fetchContent}
-      </ContentMarkdown>)
-      setSidebar(
-        fetchContent
-          .split('\n')
-          .filter(line => line.startsWith('## '))
-          .map(line => line.split(' ').slice(1).join(' '))
-          .map(line => ({ name: line, href: `#${line.replaceAll(' ', '-')}` }))
+      const newContent = []
+      newContent.push(
+        <ContentMarkdown {...fetchMetadata} header={header} uri={path.join('/')}>
+          {fetchContent}
+        </ContentMarkdown>
       )
-      // setTitle(fetchContent.split('\n')[0].split(' ').slice(1).join(' '))
-      console.log('fetchMetadata', fetchMetadata)
-      setTitle(fetchMetadata.title ?? 'Meteor Tonight')
+      setContent(newContent)
+      if (usePostTitle) {
+        setTitle(fetchMetadata.title ?? 'Meteor Tonight')
+      }
+
+      /**
+       * Extract sub-content links from content
+       * Store sub-content links in state
+       * Set sub-content index to 0
+       */
+      const newSubContentUrls = []
+      console.log('path', path)
+      console.log('fetchContent', fetchContent.split('\n'))
+      for (const line of fetchContent.split('\n')) {
+        const match = line.match(/{meta:sub-content:(?<path>.+?)}/)
+        if (match && match.groups) {
+          console.log('sub-content', match.groups.path)
+          newContent.push(
+            <PostView header={false} path={match.groups.path.split('/')} usePostTitle={false}
+          />)
+        }
+      }
     }
   }, [path, fetchContent, fetchMetadata])
-
-  let sidebarContent = <></>
-
-  if (sidebar.length > 10) {
-    sidebarContent = <Box width={200}>
-      <List className={css.MarkdownContent}>
-        {sidebar.map(item => <ListItem key={item.href}>
-          <a href={item.href}>{item.name}</a>
-        </ListItem>)}
-      </List>
-    </Box>
-  }
 
   return (<>
     {title ? <Head>
       <title>{capitalize(title)}</title>
     </Head> : ''}
-    <Box display={'flex'} flexDirection='row' width={'100%'}>
-      {sidebarContent}
+    <Box display={'flex'} flexDirection='column' width={'100%'}>
       {content}
     </Box>
   </>)
