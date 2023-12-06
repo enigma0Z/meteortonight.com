@@ -1,7 +1,7 @@
 # 3AM Vibes
 
 {meta:title:3AM Vibes}
-{meta:description:3AM Vibes (Single)}
+{meta:description:3AM Vibes}
 
 ![asdf](/img/artwork/singles/3am-vibes.png#left)
 
