@@ -15,7 +15,7 @@ I hope you are able to find some inspiration, joy, or meaning in my music.
 ### What software do you use?
 
 I use [Reason](https://www.reasonstudios.com/) primarily both for my DAW and for
-its many soft synths .  For routing audio live (i.e. during streams, etc.) I
+its many soft synths.  For routing audio live (i.e. during streams, etc.) I
 sometimes also use [Audio Hijack](https://rogueamoeba.com/audiohijack/).
 
 For streaming I use [OBS](https://obsproject.com/).
