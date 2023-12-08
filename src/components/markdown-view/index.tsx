@@ -169,7 +169,7 @@ function metadataUrl(path: string[]) {
 
 export function PostView(
   { path, usePostTitle = true, header = undefined }: 
-  { path: string[], usePostTitle: boolean, header?: boolean }
+  { path: string[], usePostTitle?: boolean, header?: boolean }
 ) {
   const [content, setContent] = useState<JSX.Element[]>([])
   const [title, setTitle] = useState(null as null | string)
