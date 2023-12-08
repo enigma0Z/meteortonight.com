@@ -6,7 +6,8 @@ export type ContentIndexItem = {
   file: string,
   title: string,
   description: string,
-  mtime: number
+  mtime: number,
+  header?: boolean,
 }
 
 export type ContentIndex = ContentIndexItem[]

@@ -25,7 +25,7 @@ const Page: NextPageWithLayout = () => {
       <meta name="twitter:site" content="@enigma_0z" />
       <meta name="twitter:title" content="enigma's pokemon site: View Post" />
     </Head>
-    <PostView path={path} />
+    <PostView path={path} usePostTitle={true} header={true} />
   </>
 }
 

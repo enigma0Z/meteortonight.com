@@ -168,8 +168,8 @@ function metadataUrl(path: string[]) {
 }
 
 export function PostView(
-  { path, usePostTitle = true, header = true }: 
-  { path: string[], usePostTitle: boolean, header: boolean }
+  { path, usePostTitle = true, header = undefined }: 
+  { path: string[], usePostTitle: boolean, header?: boolean }
 ) {
   const [content, setContent] = useState<JSX.Element[]>([])
   const [title, setTitle] = useState(null as null | string)
@@ -181,7 +181,10 @@ export function PostView(
     if (fetchContent && fetchMetadata) {
       const newContent = []
       newContent.push(
-        <ContentMarkdown {...fetchMetadata} header={header} uri={path.join('/')}>
+        <ContentMarkdown {...fetchMetadata} 
+          header={header === undefined ? fetchMetadata.header : header } 
+          uri={path.join('/')}
+        >
           {fetchContent}
         </ContentMarkdown>
       )
