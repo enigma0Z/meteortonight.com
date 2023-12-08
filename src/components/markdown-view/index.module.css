@@ -45,7 +45,14 @@
   overflow: clip;
   text-align: center;
   position: relative;
-  z-index: -50;
+}
+
+.MarkdownContainer h1 a {
+  text-decoration: none;
+}
+
+.MarkdownContainer h1 a:hover {
+  text-decoration: none;
 }
 
 .MarkdownContent h2 {

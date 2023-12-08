@@ -14,8 +14,8 @@ type Query = {
 }
 
 const Page: NextPageWithLayout = () => {
-  console.log('/content/view/post')
   const { path } = useRouter().query as Query
+  console.log('/content/view/post', path)
 
   return <>
     <Head>

@@ -5,7 +5,6 @@ function useFetch<T>(fetchUrl: string | null): [T | null, boolean, boolean, (fet
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
   const [url, setUrl] = useState(fetchUrl)
 
   useEffect(() => {
@@ -36,7 +35,7 @@ function useFetch<T>(fetchUrl: string | null): [T | null, boolean, boolean, (fet
   return [data, loading, error, setUrl]
 }
 
-export function useFetchObj<T>(fetchUrl: string | null): {
+export function useFetchObj<T>(): {
   data: T | null, 
   loading: boolean, 
   error: boolean, 
@@ -45,8 +44,7 @@ export function useFetchObj<T>(fetchUrl: string | null): {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
-  const [url, setUrl] = useState(fetchUrl)
+  const [url, setUrl] = useState<string | null>(null)
 
   useEffect(() => {
     if (url) {

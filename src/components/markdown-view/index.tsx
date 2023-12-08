@@ -67,6 +67,10 @@ function ContentMarkdown({ mtime, path, uri, header, children }: ContentMarkdown
     <ReactMarkdown
       className={css.MarkdownContent}
       components={{
+        h1: ({node, ...props}) => {
+          //@ts-ignore children[0] of an h1 is a text node
+          return <h1 {...props} ><NextLink href={uri}>{node.children[0].value}</NextLink></h1>
+        },
         h2: ({ node, ...props }) => {
           //@ts-ignore children[0] of an h2 is a text node
           const name = node.children[0].value
@@ -174,23 +178,22 @@ export function PostView(
   const [content, setContent] = useState<JSX.Element[]>([])
   const [title, setTitle] = useState(null as null | string)
 
-  const [fetchContent] = useFetch<string>(contentUrl(path))
-  const [fetchMetadata] = useFetch<ContentIndexItem>(metadataUrl(path))
+  const fetchContent = useFetchObj<string>()
+  const fetchMetadata = useFetchObj<ContentIndexItem>()
 
   useEffect(() => {
-    if (fetchContent && fetchMetadata) {
+    if (fetchContent.data && fetchMetadata.data) {
       const newContent = []
       newContent.push(
-        <ContentMarkdown {...fetchMetadata} 
-          header={header === undefined ? fetchMetadata.header : header } 
+        <ContentMarkdown {...fetchMetadata.data} 
+          header={header === undefined ? fetchMetadata.data.header : header } 
           uri={path.join('/')}
         >
-          {fetchContent}
+          {fetchContent.data}
         </ContentMarkdown>
       )
-      setContent(newContent)
       if (usePostTitle) {
-        setTitle(fetchMetadata.title ?? 'Meteor Tonight')
+        setTitle(fetchMetadata.data.title ?? 'Meteor Tonight')
       }
 
       /**
@@ -198,20 +201,25 @@ export function PostView(
        * Store sub-content links in state
        * Set sub-content index to 0
        */
-      const newSubContentUrls = []
-      console.log('path', path)
-      console.log('fetchContent', fetchContent.split('\n'))
-      for (const line of fetchContent.split('\n')) {
-        const match = line.match(/{meta:sub-content:(?<path>.+?)}/)
-        if (match && match.groups) {
-          console.log('sub-content', match.groups.path)
-          newContent.push(
-            <PostView header={false} path={match.groups.path.split('/')} usePostTitle={false}
-          />)
+      if (fetchContent.data){
+        for (const line of fetchContent.data.split('\n')) {
+          const match = line.match(/{meta:sub-content:(?<path>.+?)}/)
+          if (match && match.groups) {
+            newContent.push(
+              <PostView header={false} path={match.groups.path.split('/')} usePostTitle={false}
+            />)
+          }
         }
       }
+
+      setContent(newContent)
     }
-  }, [path, fetchContent, fetchMetadata])
+  }, [fetchContent.data, fetchMetadata.data])
+
+  useEffect(() => {
+    fetchContent.setUrl(contentUrl(path))
+    fetchMetadata.setUrl(metadataUrl(path))
+  }, [path])
 
   return (<>
     {title ? <Head>
