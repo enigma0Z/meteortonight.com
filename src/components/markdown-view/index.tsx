@@ -85,7 +85,7 @@ function ContentMarkdown({ mtime, path, uri, header, children }: ContentMarkdown
           return <NextLink href={props.href ?? ''} {...props} />
         },
         img: ({node, ...props}) => {
-          return <a href={props.src ?? ''}><img {...props}/></a>
+          return <a target="_blank" href={props.src ?? ''}><img {...props}/></a>
         }
       }}
       remarkPlugins={[markdownProcessor, remarkGfm]}
