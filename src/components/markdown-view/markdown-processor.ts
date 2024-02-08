@@ -70,8 +70,8 @@ export default function plugin(): Plugin {
           // style: {display: 'block', marginLeft: 'auto', marginRight: 'auto'},
           src: `https://www.youtube.com/embed/${videoId}`,
           allow: 'autoplay; picture-in-picture; web-share',
-          width: orientation === 'vertical' ? 450 : 800,
-          height: orientation === 'vertical' ? 800 : 450,
+          width: orientation === 'vertical' ? 225 : 400,
+          height: orientation === 'vertical' ? 400 : 225,
           frameborder: 0,
         }
       }
