@@ -98,13 +98,10 @@ export function getUriPathFromContent(content: ContentIndexItem) {
 
 export function CategoryView({ category }: { category: string[] }) {
   const [pageContent, setPageContent] = useState([] as JSX.Element[])
-  const jsonPath = [BASE_PATH]
-  if (category) jsonPath.push(...category)
-  jsonPath.push('index.json')
 
-  const [ data, loading, error ] = useFetch<ContentIndex>(jsonPath.join('/').toLowerCase())
+  const fetchContent = useFetchObj<ContentIndex>()
 
-  const fetchContent = async (displayedContent: ContentIndex) => {
+  const doFetchContent = async (displayedContent: ContentIndex) => {
     const newPageContent = []
     try {
       console.log('fetching content', displayedContent)
@@ -143,13 +140,23 @@ export function CategoryView({ category }: { category: string[] }) {
 
   // Process data from fetched response
   useEffect(() => {
-    if (data) {
+    if (fetchContent.data) {
       console.log('fetched response processing')
-      const numArticles = data.length > MAX_ARTICLES ? MAX_ARTICLES : data.length
-      const displayedContent = data.sort((a, b) => a.mtime < b.mtime ? 1 : -1).slice(0, numArticles)
-      fetchContent(displayedContent)
+      const numArticles = fetchContent.data.length > MAX_ARTICLES ? MAX_ARTICLES : fetchContent.data.length
+      const displayedContent = fetchContent.data.sort((a, b) => a.mtime < b.mtime ? 1 : -1).slice(0, numArticles)
+      doFetchContent(displayedContent)
     }
-  }, [data])
+  }, [fetchContent.data])
+
+  useEffect(() => {
+    const jsonPath = [BASE_PATH]
+    if (category) jsonPath.push(...category)
+    jsonPath.push('index.json')
+
+    const fetchPath = jsonPath.join('/').toLowerCase()
+
+    fetchContent.setUrl(fetchPath)
+  }, [category])
 
   return (<>
     <Head>
