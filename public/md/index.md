@@ -6,7 +6,7 @@
 
 {bubble::big::tiktok::tiktok.com/@meteor.tonight::Meteor Tonight}
 
-{bubble::big::youtube::youtube.com/@MeteorTonight::Meteor Tonight}
+{bubble::big::youtube::youtube.com/@meteor.tonight?sub_confirmation=1::Meteor Tonight}
 
 {bubble::big::tidal::listen.tidal.com/artist/6575950::Meteor Tonight}
 
