@@ -14,6 +14,7 @@ output_items = []
 RE_META = r'{meta:(.+)}'
 
 for item in os.walk('public/md'):
+    skip_index = False
     for file in (item[2]):
         item_path = item[0].split('/')[2:]
         item_file = os.path.splitext(file)[0]
@@ -36,10 +37,15 @@ for item in os.walk('public/md'):
             ):
                 if line == 'no-header':
                     item_header = False
+                if line == 'no-index':
+                    skip_index = True
+                    break
                 elif line.startswith('title:'):
                     item_title = ':'.join(line.split(':')[1:])
                 elif line.startswith('description:'):
                     item_description = ':'.join(line.split(':')[1:])
+
+            if skip_index: continue
 
             item_mtime = os.stat(os.path.join(item[0], file)).st_mtime * 1000
 
