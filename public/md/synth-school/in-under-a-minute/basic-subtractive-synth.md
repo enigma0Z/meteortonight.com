@@ -1,5 +1,7 @@
 # Program a (subtractive) synth in under a minute
 
+{meta:Title:Program a (subtractive) synth in under a minute}
+
 {yt-embed::horizontal::lUggXRg2oUQ}
 
 Learn the basics of subtractive synthesizers: let me be your dirty intro into
