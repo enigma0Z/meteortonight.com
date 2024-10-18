@@ -43,6 +43,9 @@ export function Layout({ children }: { sidebar?: ReactElement, children: ReactEl
               <NextLink href='/content/view/category/tone-tutorials'>tone tutorials</NextLink>
             </Typography>
             <Typography variant='h3' flex={1} textAlign={'center'}>
+              <NextLink href='/content/view/category/synth-school'>synth school</NextLink>
+            </Typography>
+            <Typography variant='h3' flex={1} textAlign={'center'}>
               <NextLink href='/content/view/post/about'>about</NextLink>
             </Typography>
           </Box>
