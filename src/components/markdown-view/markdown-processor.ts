@@ -1,3 +1,19 @@
+/**
+ * Process a markdown file into a content or category view
+ * 
+ * Tags {surrounded by curly braces} will be ignored, and used for processing
+ * output / doing other tricks with the content being rendered.
+ * 
+ * These are processed on render
+ * {bubble::size::icon::url::text}  -> Renders a bubble link
+ * {yt-embed::orientation::videoId} -> Embeds a YouTube video
+ * 
+ * These are processed on index
+ * {meta:no-header}     -> Does not render the header on the page, processed on index
+ * {meta:no-index}      -> Do not index this page
+ * {title:<text>}       -> Override page title in indexes
+ * {description:<text>} -> Override summary in indexes
+ */
 import { Find, Replace, findAndReplace, ReplaceFunction } from 'mdast-util-find-and-replace';
 import { Plugin } from 'unified'
 import { PhrasingContent } from 'mdast'
